@@ -21,4 +21,3 @@ yarn dev # start the bot in development mode
 - `yarn test:watch` - Run the tests in watch mode
 - `yarn typecheck` - Runs Typescript type checking
 - `yarn build` - Runs all the build steps
-
