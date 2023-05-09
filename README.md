@@ -17,8 +17,7 @@ Create a bot application on the [Discord Developer Portal](https://discord.com/d
 
 ```bash
 touch .env
-# Add the following line to the .env file:
-# BOT_TOKEN=<your-bot-token>
+echo "BOT_TOKEN=<your-bot-token>" > .env
 ```
 
 You can now run the bot in development mode using `yarn dev` or in production mode using `yarn start`.
