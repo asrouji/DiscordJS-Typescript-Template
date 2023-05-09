@@ -13,10 +13,12 @@ git clone <repo-url> <project-name>
 yarn # install dependencies
 ```
 
-Create a bot application on the [Discord Developer Portal](https://discord.com/developers/applications) and add a bot user to it. Copy the bot token and add it to the `.env` file in the root of the project:
+Create a bot application on the [Discord Developer Portal](https://discord.com/developers/applications) and add a bot user to it. Copy the bot token and add it to a `.env` file in the root of the project:
 
 ```bash
-BOT_TOKEN=<your-bot-token>
+touch .env
+# Add the following line to the .env file:
+# BOT_TOKEN=<your-bot-token>
 ```
 
 You can now run the bot in development mode using `yarn dev` or in production mode using `yarn start`.
