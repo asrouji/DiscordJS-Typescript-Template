@@ -1,4 +1,5 @@
-import { Client, User, CommandInteraction, Command, SnowflakeUtil, ChatInputCommandInteraction } from 'discord.js'
+import { Client, User, CommandInteraction, SnowflakeUtil, ChatInputCommandInteraction } from 'discord.js'
+import { Command } from '../types/command'
 
 export default class MockDiscord {
   private client!: Client

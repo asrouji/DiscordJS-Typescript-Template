@@ -1,4 +1,6 @@
-import { Client, Events, GatewayIntentBits, Collection, Command } from 'discord.js'
+import { BotClient } from '../util/bot-client'
+import { Events, GatewayIntentBits } from 'discord.js'
+import { Command } from '../types/command'
 import dotenv from 'dotenv'
 import fs from 'fs'
 import path from 'path'
@@ -9,11 +11,9 @@ const __dirname = path.dirname(__filename)
 
 dotenv.config()
 
-const client = new Client({
+const client = new BotClient({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
 })
-
-client.commands = new Collection()
 
 const commandsPath = path.join(__dirname, '..', 'commands')
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'))

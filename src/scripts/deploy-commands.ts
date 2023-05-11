@@ -1,4 +1,5 @@
-import { Command, REST, Routes } from 'discord.js'
+import { REST, Routes } from 'discord.js'
+import { Command } from '../types/command'
 import fs from 'node:fs'
 import path from 'node:path'
 import dotenv from 'dotenv'
@@ -14,14 +15,14 @@ if (!process.env.BOT_TOKEN) {
   process.exit(1)
 }
 
-const commands: Command['data'][] = []
+const commands: Command[] = []
 const commandsPath = path.join(__dirname, '..', 'commands')
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'))
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file)
   const command: Command = (await import(pathToFileURL(filePath).href)).default
-  commands.push(command.data)
+  commands.push(command)
 }
 
 const rest = new REST().setToken(process.env.BOT_TOKEN)
@@ -32,7 +33,7 @@ if (!process.env.CLIENT_ID) {
 }
 try {
   console.log(`Started refreshing application (/) commands.`)
-  await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: commands })
+  await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: commands.map(c => c.data) })
   console.log(`Successfully reloaded application (/) commands.`)
 } catch (error) {
   console.error(error)

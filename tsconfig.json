@@ -1,8 +1,7 @@
 {
   "ts-node": {
     "esm": true,
-    "experimentalSpecifierResolution": "node",
-    "files": true
+    "experimentalSpecifierResolution": "node"
   },
   "compilerOptions": {
     "noEmit": true,
@@ -16,9 +15,6 @@
     "forceConsistentCasingInFileNames": true,
     "useUnknownInCatchVariables": true,
   },
-  "files": [
-    "src/types/client.d.ts"
-  ],
   "include": [
     "src/**/*",
   ],
