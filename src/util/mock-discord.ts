@@ -1,9 +1,9 @@
-import { Client, User, CommandInteraction, Command, SnowflakeUtil } from 'discord.js'
+import { Client, User, CommandInteraction, Command, SnowflakeUtil, ChatInputCommandInteraction } from 'discord.js'
 
 export default class MockDiscord {
   private client!: Client
   private user!: User
-  public interaction!: CommandInteraction
+  public interaction!: ChatInputCommandInteraction
 
   constructor(options: { command?: Command } = {}) {
     this.mockClient()
@@ -44,6 +44,26 @@ export default class MockDiscord {
     ])
     this.interaction.reply = jest.fn()
     this.interaction.isCommand = jest.fn(() => true)
+    this.interaction.isChatInputCommand = jest.fn(() => true)
+
+    this.interaction.options = {
+      client: this.client,
+      data: [],
+      resolved: null,
+      get: jest.fn(),
+      getMember: jest.fn(),
+      getUser: jest.fn(),
+      getString: jest.fn(),
+      getBoolean: jest.fn(),
+      getChannel: jest.fn(),
+      getRole: jest.fn(),
+      getMentionable: jest.fn(),
+      getNumber: jest.fn(),
+      getInteger: jest.fn(),
+      getSubcommand: jest.fn(),
+      getSubcommandGroup: jest.fn(),
+      getAttachment: jest.fn(),
+    }
   }
 }
 

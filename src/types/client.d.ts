@@ -1,4 +1,4 @@
-import { Collection } from 'discord.js'
+import { Collection, SlashCommandBuilder } from 'discord.js'
 
 declare module 'discord.js' {
   export interface Client {
@@ -6,8 +6,7 @@ declare module 'discord.js' {
   }
 
   export interface Command {
-    name: string
-    description: string
-    execute: (interaction: CommandInteraction) => Promise<void>
+    data: Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>
+    execute: (interaction: CommandInteraction) => Promise<unknown>
   }
 }
