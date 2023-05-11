@@ -1,11 +1,9 @@
 {
-  "include": [
-    "src/**/*",
-    "jest.config.js"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "files": true
+  },
   "compilerOptions": {
     "noEmit": true,
     "allowJs": true,
@@ -17,11 +15,14 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "useUnknownInCatchVariables": true,
-    "allowSyntheticDefaultImports": true,
   },
-  "ts-node": {
-    "esm": true,
-    "experimentalResolver": true,
-    "experimentalSpecifierResolution": "node",
-  }
+  "files": [
+    "src/types/client.d.ts"
+  ],
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules"
+  ],
 }
