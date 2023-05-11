@@ -21,7 +21,7 @@ const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('
 for (const file of commandFiles) {
   const commandPath = path.join(commandsPath, file)
   const command: Command = (await import(pathToFileURL(commandPath).href)).default
-  client.commands.set(command.name, command)
+  client.commands.set(command.data.name, command)
 }
 
 client.once(Events.ClientReady, c => {

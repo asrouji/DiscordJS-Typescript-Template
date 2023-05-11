@@ -14,14 +14,14 @@ if (!process.env.BOT_TOKEN) {
   process.exit(1)
 }
 
-const commands: Command[] = []
+const commands: Command['data'][] = []
 const commandsPath = path.join(__dirname, '..', 'commands')
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'))
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file)
   const command: Command = (await import(pathToFileURL(filePath).href)).default
-  commands.push(command)
+  commands.push(command.data)
 }
 
 const rest = new REST().setToken(process.env.BOT_TOKEN)
