@@ -26,16 +26,14 @@ for (const file of commandFiles) {
 
 const rest = new REST().setToken(process.env.BOT_TOKEN)
 
-;(async () => {
-  if (!process.env.CLIENT_ID) {
-    console.log('[ERROR] No CLIENT_ID provided in the .env file.')
-    process.exit(1)
-  }
-  try {
-    console.log(`Started refreshing application (/) commands.`)
-    await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: commands })
-    console.log(`Successfully reloaded application (/) commands.`)
-  } catch (error) {
-    console.error(error)
-  }
-})()
+if (!process.env.CLIENT_ID) {
+  console.log('[ERROR] No CLIENT_ID provided in the .env file.')
+  process.exit(1)
+}
+try {
+  console.log(`Started refreshing application (/) commands.`)
+  await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: commands })
+  console.log(`Successfully reloaded application (/) commands.`)
+} catch (error) {
+  console.error(error)
+}
