@@ -1,5 +1,5 @@
 import { executeCommandAndSpyReply } from '../util/mock-discord'
-import pingCommand from '../../src/commands/ping'
+import pingCommand from '../commands/ping'
 
 describe('ping command', () => {
   it('should reply with Pong!', async () => {
