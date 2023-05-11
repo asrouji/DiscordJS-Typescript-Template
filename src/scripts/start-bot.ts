@@ -2,6 +2,10 @@ import { Client, Events, GatewayIntentBits, Collection, Command } from 'discord.
 import dotenv from 'dotenv'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath, pathToFileURL } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 dotenv.config()
 
@@ -11,11 +15,12 @@ const client = new Client({
 
 client.commands = new Collection()
 
-const commandsPath = path.join(__dirname, 'commands')
+const commandsPath = path.join(__dirname, '..', 'commands')
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'))
 
 for (const file of commandFiles) {
-  const command: Command = await import(path.join(commandsPath, file))
+  const commandPath = path.join(commandsPath, file)
+  const command: Command = (await import(pathToFileURL(commandPath).href)).default
   client.commands.set(command.name, command)
 }
 

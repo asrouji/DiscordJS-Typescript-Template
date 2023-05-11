@@ -2,6 +2,10 @@ import { Command, REST, Routes } from 'discord.js'
 import fs from 'node:fs'
 import path from 'node:path'
 import dotenv from 'dotenv'
+import { fileURLToPath, pathToFileURL } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 dotenv.config()
 
@@ -11,17 +15,13 @@ if (!process.env.BOT_TOKEN) {
 }
 
 const commands: Command[] = []
-const foldersPath = path.join(__dirname, '..', 'commands')
-const commandFolders = fs.readdirSync(foldersPath)
+const commandsPath = path.join(__dirname, '..', 'commands')
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'))
 
-for (const folder of commandFolders) {
-  const commandsPath = path.join(foldersPath, folder)
-  const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'))
-  for (const file of commandFiles) {
-    const filePath = path.join(commandsPath, file)
-    const command: Command = await import(filePath)
-    commands.push(command)
-  }
+for (const file of commandFiles) {
+  const filePath = path.join(commandsPath, file)
+  const command: Command = (await import(pathToFileURL(filePath).href)).default
+  commands.push(command)
 }
 
 const rest = new REST().setToken(process.env.BOT_TOKEN)
