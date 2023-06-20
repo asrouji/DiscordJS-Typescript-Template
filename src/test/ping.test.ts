@@ -1,15 +1,11 @@
 import pingCommand from '../commands/ping'
-import CommandInteraction from '../mocks/command-interaction'
+import * as Mocks from '../util/discord-mocks'
 
 describe('ping command', () => {
   it('should reply with Pong!', async () => {
-    const interaction = CommandInteraction.create({
-      isButton: () => false,
-    })
+    const interaction = Mocks.CommandInteraction.create()
     await pingCommand.execute(interaction)
-    expect(interaction.reply).toHaveBeenCalledWith('Pong!')
     expect(interaction.reply).toHaveBeenCalledTimes(1)
-    const isButton = interaction.isButton()
-    expect(isButton).toBe(false)
+    expect(interaction.reply).toHaveBeenCalledWith('Pong!')
   })
 })
