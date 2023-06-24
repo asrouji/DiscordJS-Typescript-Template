@@ -1,9 +1,9 @@
 import Discord from 'discord.js'
 import Props from '../types/mock-props'
 
-export class CommandInteraction {
-  protected constructor(props?: Props<Discord.CommandInteraction>) {
-    Object.getOwnPropertyNames(Discord.CommandInteraction.prototype)
+export class User {
+  protected constructor(props?: Props<Discord.User>) {
+    Object.getOwnPropertyNames(Discord.User.prototype)
       .filter(name => name !== 'constructor')
       .forEach(name => {
         Object.defineProperty(this, name, {
@@ -18,7 +18,7 @@ export class CommandInteraction {
     }
   }
 
-  static create<Cached extends Discord.CacheType = Discord.CacheType>(props?: Props<Discord.CommandInteraction>) {
-    return new CommandInteraction(props) as unknown as Discord.CommandInteraction<Cached>
+  static create(props?: Props<Discord.User>) {
+    return new User(props) as unknown as Discord.User
   }
 }
