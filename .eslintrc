@@ -9,5 +9,13 @@
     "@typescript-eslint",
     "prettier"
   ],
-  "root": true
+  "root": true,
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
 }
