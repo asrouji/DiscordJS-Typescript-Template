@@ -1,9 +1,9 @@
 # Discord.js Typescript Template
 
-- 100% Typescript (ESM)
-- Slash Command Handler
-- Jest + Babel Integration
-- ESLint + Prettier Config
+- ⚙️ 100% Typescript (ESM)
+- 🛠️ Slash Command Handler
+- 🧪 Unit Testing with Jest
+- 🧹 ESLint + Prettier Config
 
 ## Getting Started
 
@@ -34,3 +34,4 @@ You can now run the bot in development mode using `yarn dev` or in production mo
 - `yarn typecheck` - Runs Typescript type checking
 - `yarn build` - Runs all the build steps
 - `yarn deploy-commands` - Deploys slash commands to Discord
+- `yarn delete-commands` - Deletes all slash commands from Discord
