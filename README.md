@@ -7,11 +7,11 @@
 
 ## Getting Started
 
-Start by cloning this repo and installing dependencies:
+Start by creating a new repository on Github from this template. You can then clone the repo and install dependencies:
 
 ```bash
-git clone <repo-url> <project-name>
-yarn # install dependencies
+npm install -g yarn # install yarn (if not already installed)
+yarn                # install dependencies
 ```
 
 Create a bot application on the [Discord Developer Portal](https://discord.com/developers/applications) and add a bot user to it. Copy the bot token and client ID and add them to a `.env` file in the root of the project:
