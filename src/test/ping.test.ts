@@ -1,9 +1,10 @@
 import pingCommand from '../commands/ping'
-import * as Mocks from '../util/discord-mocks'
+import { CommandInteraction } from 'discord.js'
+import { mock } from 'jest-mock-extended'
 
 describe('ping command', () => {
-  it('should reply with Pong!', async () => {
-    const interaction = Mocks.CommandInteraction.create()
+  test('replies with pong when called', async () => {
+    const interaction = mock<CommandInteraction>()
     await pingCommand.execute(interaction)
     expect(interaction.reply).toHaveBeenCalledTimes(1)
     expect(interaction.reply).toHaveBeenCalledWith('Pong!')
