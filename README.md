@@ -22,7 +22,39 @@ echo "BOT_TOKEN=<your-bot-token>" >> .env
 echo "CLIENT_ID=<your-client-id>" >> .env
 ```
 
-You can now run the bot in development mode using `yarn dev` or in production mode using `yarn start`.
+After [adding the bot to a Discord server](https://discordjs.guide/preparations/adding-your-bot-to-servers.html#creating-and-using-your-invite-link), you can run the bot start script:
+
+```bash
+yarn dev # development mode (reloads on file changes)
+yarn start # production mode (no reloads)
+```
+
+## Adding Slash Commands
+
+To add a new slash command, create a new `.ts` file in the `src/commands` directory. The file should export a `Command` object. An example command from `src/commands/ping.ts` is shown below:
+
+```ts
+import { SlashCommandBuilder } from 'discord.js'
+import { Command } from '../types/command'
+
+const command: Command = {
+  data: new SlashCommandBuilder().setName('ping').setDescription('Replies with Pong!'),
+  execute: async interaction => await interaction.reply(`Pong!`),
+}
+
+export default command
+```
+
+The `Command` object has the following properties:
+
+- `data` - The command data to be sent to Discord (see [Discord.js docs](https://github.com/discordjs/builders/blob/main/docs/examples/Slash%20Command%20Builders.md))
+- `execute` - The function to run when the command is invoked
+
+To deploy the command to Discord, run the `deploy-commands` script:
+
+```bash
+yarn deploy-commands
+```
 
 ## Commands
 
