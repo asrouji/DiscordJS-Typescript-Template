@@ -1,3 +1,8 @@
+/**
+ * @file Start the bot.
+ * Run with `yarn dev` for development or `yarn start` for production.
+ */
+
 import { BotClient } from '../util/bot-client'
 import { Events, GatewayIntentBits } from 'discord.js'
 import { Command } from '../types/command'

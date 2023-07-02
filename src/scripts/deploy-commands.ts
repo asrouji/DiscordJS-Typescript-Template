@@ -1,3 +1,8 @@
+/**
+ * @file Deploys all slash commands to Discord.
+ * Run with `yarn deploy-commands`
+ */
+
 import { REST, Routes } from 'discord.js'
 import { Command } from '../types/command'
 import fs from 'node:fs'
