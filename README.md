@@ -1,7 +1,7 @@
 # Discord.js Typescript Template
 
 - ⚙️ 100% Typescript (ESM)
-- 🛠️ Slash Command Handler
+- 🛠️ Slash Command & Event Handler
 - 🧪 Unit Testing with Jest
 - 🧹 ESLint + Prettier Config
 
