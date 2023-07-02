@@ -9,6 +9,17 @@ import fs from 'node:fs'
 import path from 'node:path'
 import dotenv from 'dotenv'
 import { fileURLToPath, pathToFileURL } from 'url'
+import yesno from 'yesno'
+
+const ok = await yesno({
+  question: 'Are you sure you want to deploy all slash commands? (y/N)',
+  defaultValue: false,
+})
+
+if (!ok) {
+  console.log('Aborting...')
+  process.exit(0)
+}
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
