@@ -31,7 +31,3 @@ jobs:
 
     - name: Run Jest Unit Tests
       run: yarn test
-
-    - name: Generate Jest Coverage Report
-      uses: ArtiomTr/jest-coverage-report-action@v2.2.4
-    
