@@ -4,7 +4,7 @@
  */
 
 import { REST, Routes } from 'discord.js'
-import { Command } from '../types/command'
+import Command from '../types/command'
 import fs from 'node:fs'
 import path from 'node:path'
 import dotenv from 'dotenv'

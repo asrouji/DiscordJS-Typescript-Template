@@ -1,7 +1,8 @@
 {
   "testEnvironment": "node",
   "roots": [
-    "<rootDir>/src"
+    "<rootDir>/src",
+    "<rootDir>/test"
   ],
   "testMatch": [
     "**/__tests__/**/*.+(ts|js)",
@@ -14,5 +15,19 @@
     "node_modules",
     "src"
   ],
-  "collectCoverage": true
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "src/**/*.{js,ts}"
+  ],
+  "coveragePathIgnorePatterns": [
+    "/node_modules/",
+    "/test/",
+    "/src/scripts/",
+    "/src/types/"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "lines": 90
+    }
+  }
 }
