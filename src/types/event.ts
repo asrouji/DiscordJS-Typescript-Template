@@ -6,8 +6,11 @@ import { ClientEvents } from 'discord.js'
  * @template T The event name, e.g. `Events.ClientReady`
  */
 export default interface Event<T extends keyof ClientEvents> {
+  /** The name of the event */
   name: T
+  /** Whether the event should only be executed once */
   once?: boolean
+  /** The function to execute when the event is emitted */
   execute: (...args: ClientEvents[T]) => Promise<unknown>
 }
 
