@@ -1,12 +1,12 @@
 import { Events } from 'discord.js'
-import Event from '../types/event'
+import { createEvent } from '../types/event'
 import BotClient from '../util/botClient'
 
-const event: Event<Events.InteractionCreate> = {
+const event = createEvent({
   name: Events.InteractionCreate,
   once: false,
   execute: async interaction => {
-    if (!interaction.isCommand()) {
+    if (!interaction.isChatInputCommand()) {
       console.error(`Interaction ${interaction.id} is not a command.`)
       return
     }
@@ -27,6 +27,6 @@ const event: Event<Events.InteractionCreate> = {
       await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true })
     }
   },
-}
+})
 
 export default event

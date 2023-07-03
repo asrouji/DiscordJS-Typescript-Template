@@ -1,12 +1,12 @@
 import { Events } from 'discord.js'
-import Event from '../types/event'
+import { createEvent } from '../types/event'
 
-const event: Event<Events.ClientReady> = {
+const event = createEvent({
   name: Events.ClientReady,
   once: true,
   execute: async client => {
     console.log(`Logged in as ${client.user?.tag}`)
   },
-}
+})
 
 export default event

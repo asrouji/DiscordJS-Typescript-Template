@@ -19,6 +19,7 @@ describe('interaction handler', () => {
     client = mock<BotClient>()
     interaction = mock<CommandInteraction>({
       isCommand: jest.fn().mockReturnValue(true),
+      isChatInputCommand: jest.fn().mockReturnValue(true),
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       client: client,
@@ -53,6 +54,7 @@ describe('interaction handler', () => {
   test('does not execute if the interaction is not a command', async () => {
     client.commands.get = jest.fn()
     interaction.isCommand.mockReturnValue(false)
+    interaction.isChatInputCommand.mockReturnValue(false)
 
     await interactionEvent.execute(interaction as Interaction)
 
