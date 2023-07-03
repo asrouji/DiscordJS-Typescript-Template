@@ -56,6 +56,33 @@ To deploy the command to Discord, run the `deploy-commands` script:
 yarn deploy-commands
 ```
 
+## Adding Events
+
+To add a new event, create a new `.ts` file in the `src/events` directory. The file should export an `Event` object. An example event from `src/events/ready.ts` is shown below:
+
+```ts
+import { Events } from 'discord.js'
+import { createEvent } from '../types/event'
+
+const event = createEvent({
+  name: Events.ClientReady,
+  once: true,
+  execute: async client => {
+    console.log(`Logged in as ${client.user?.tag}`)
+  },
+})
+
+export default event
+```
+
+The `Event` object has the following properties:
+
+- `name` - The name of the event to listen for (see [Discord.js docs](https://discord.js.org/#/docs/main/stable/class/Client))
+- `once` - Whether the event should only be run once
+- `execute` - The function to run when the event is triggered
+
+Events are automatically registered when the bot starts, so there is no need to manually deploy them to Discord.
+
 ## Commands
 
 - `yarn dev` - Start the bot in development mode
