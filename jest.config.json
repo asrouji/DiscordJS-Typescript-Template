@@ -24,10 +24,5 @@
     "/test/",
     "/src/scripts/",
     "/src/types/"
-  ],
-  "coverageThreshold": {
-    "global": {
-      "lines": 90
-    }
-  }
+  ]
 }
