@@ -1,13 +1,11 @@
 import BotClient from '../../src/util/botClient'
 
-describe('bot client extension', () => {
-  let client: BotClient
+let client: BotClient
 
-  beforeEach(() => {
-    client = new BotClient({ intents: [] })
-  })
+beforeEach(() => {
+  client = new BotClient({ intents: [] })
+})
 
-  test('creates a commands collection', () => {
-    expect(client.commands).toBeDefined()
-  })
+test('creates a commands collection', () => {
+  expect(client.commands).toBeDefined()
 })
