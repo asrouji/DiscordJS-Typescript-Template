@@ -1,4 +1,4 @@
-import { Collection, CommandInteraction, Interaction, SlashCommandBuilder } from 'discord.js'
+import { Client, Collection, CommandInteraction, Interaction, SlashCommandBuilder } from 'discord.js'
 import interactionEvent from '../../src/events/interactionCreate'
 import { MockProxy, mock } from 'jest-mock-extended'
 import BotClient from '../../src/util/botClient'
@@ -19,9 +19,8 @@ beforeEach(() => {
   interaction = mock<CommandInteraction>({
     isCommand: jest.fn().mockReturnValue(true),
     isChatInputCommand: jest.fn().mockReturnValue(true),
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    client: client,
+    client: client as Client<true>,
+    valueOf: jest.fn(),
   }) as unknown as MockProxy<CommandInteraction>
 })
 
