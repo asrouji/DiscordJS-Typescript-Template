@@ -1,8 +1,8 @@
 import { ClientEvents } from 'discord.js'
 
 /**
- * Interface for defining event handlers. Import the `Events` enum from discord.js to see all possible events.
- * It is recommended to use the `createEvent` function to create an event, as it will infer the type of the event.
+ * Interface for defining event listners. Import the `Events` enum from discord.js to see all possible event types.
+ * It is recommended to use the `createEvent` function to create an event, as it will infer the type of the event from its name.
  * @template T The event name, e.g. `Events.ClientReady`
  */
 export default interface EventListener<T extends keyof ClientEvents> {
@@ -15,9 +15,8 @@ export default interface EventListener<T extends keyof ClientEvents> {
 }
 
 /**
- * Creates an event handler with the `Event` interface.
- * @template T The event name, e.g. `Events.ClientReady`
- * @param event The event handler
- * @returns The event handler
+ * Creates an event listener with the `EventListener` interface.
+ * @param event parameters for the event listener
+ * @returns the created EventListener
  */
 export const createEventListener = <T extends keyof ClientEvents>(event: EventListener<T>) => event
