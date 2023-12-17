@@ -50,10 +50,16 @@ The `Command` object has the following properties:
 - `data` - The command data to be sent to Discord (see [Discord.js docs](https://github.com/discordjs/builders/blob/main/docs/examples/Slash%20Command%20Builders.md))
 - `execute` - The function to run when the command is invoked
 
-To deploy the command to Discord, run the `deploy-commands` script:
+To deploy all created commands to Discord (so that they appear when you type `/`), run the `deploy-commands` script:
 
 ```bash
 yarn deploy-commands
+```
+
+You can also delete all commands from Discord with the `delete-commands` script:
+
+```bash
+yarn delete-commands
 ```
 
 ## Adding Events
