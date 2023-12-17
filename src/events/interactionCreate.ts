@@ -1,5 +1,5 @@
 import { Events } from 'discord.js'
-import { createEventListener } from '../types/event'
+import { createEventListener } from '../types/eventListener'
 
 import chatInputCommandHandler from '../handlers/chatInputCommand'
 import stringSelectMenuHandler from '../handlers/stringSelectMenu'
