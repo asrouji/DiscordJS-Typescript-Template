@@ -47,10 +47,13 @@ export default command
 
 The `Command` object has the following properties:
 
-- `data` - The command data to be sent to Discord (see [Discord.js docs](https://github.com/discordjs/builders/blob/main/docs/examples/Slash%20Command%20Builders.md))
-- `execute` - The function to run when the command is invoked
+- `data` - The command data to be displayed on Discord, as shown:
+  
+![Command Data](images/slash_command_preview.png)
 
-To deploy all created commands to Discord (so that they appear when you type `/`), run the `deploy-commands` script:
+- `execute` - The function to run when the command is invoked. This function recieves an `Interaction` object which must be aknowledged with a reply or deferred response.
+
+To deploy all created commands to Discord, run the `deploy-commands` script:
 
 ```bash
 yarn deploy-commands
@@ -62,9 +65,14 @@ You can also delete all commands from Discord with the `delete-commands` script:
 yarn delete-commands
 ```
 
-## Adding Events
+## Adding Event Listeners
 
-To add a new event, create a new `.ts` file in the `src/events` directory. The file should export an `Event` object. An example event from `src/events/ready.ts` is shown below:
+Two events listeners are already set up in the template: `ready` and `interactionCreate`:
+
+- `ready` - Triggered when the bot first comes online
+- `interactionCreate` - Triggered when a user interacts with the bot via slash command, button, modal, etc.
+
+You can add listeners for more events by creating a new `.ts` file in the `src/events` directory. The file should export an `Event` object. An example event from `src/events/ready.ts` is shown below:
 
 ```ts
 import { Events } from 'discord.js'
