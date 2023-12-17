@@ -7,4 +7,5 @@ test('logs when the bot is ready', async () => {
   const client = mock<Client>()
   await readyEvent.execute(client)
   expect(console.log).toBeCalled()
+  jest.restoreAllMocks()
 })

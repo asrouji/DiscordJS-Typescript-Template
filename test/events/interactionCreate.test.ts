@@ -9,6 +9,10 @@ beforeAll(() => {
   console.error = jest.fn()
 })
 
+afterAll(() => {
+  jest.restoreAllMocks()
+})
+
 test('invokes the correct interaction handler', async () => {
   const chatInputCommandInteraction = mock<ChatInputCommandInteraction>({
     isCommand: jest.fn().mockReturnValue(true),
