@@ -16,6 +16,11 @@ const __dirname = path.dirname(__filename)
 
 dotenv.config()
 
+if (!process.env.BOT_TOKEN) {
+  console.error('No bot token provided -- please set BOT_TOKEN in .env')
+  process.exit(1)
+}
+
 const client = new BotClient({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
 })
