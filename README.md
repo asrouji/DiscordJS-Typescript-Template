@@ -72,13 +72,13 @@ Two events listeners are already set up in the template: `ready` and `interactio
 - `ready` - Triggered when the bot first comes online
 - `interactionCreate` - Triggered when a user interacts with the bot via slash command, button, modal, etc.
 
-You can add listeners for more events by creating a new `.ts` file in the `src/events` directory. The file should export an `Event` object. An example event from `src/events/ready.ts` is shown below:
+You can support other events by adding additional event listeners `src/events` directory. Each listener should export an `EventListener` object. An example event from `src/events/ready.ts` is shown below:
 
 ```ts
 import { Events } from 'discord.js'
-import { createEvent } from '../types/event'
+import { createEventListener } from '../types/eventListener'
 
-const event = createEvent({
+const event = createEventListener({
   name: Events.ClientReady,
   once: true,
   execute: async client => {
@@ -95,7 +95,7 @@ The `Event` object has the following properties:
 - `once` - Whether the event should only be run once
 - `execute` - The function to run when the event is triggered
 
-Events are automatically registered when the bot starts, so there is no need to manually deploy them to Discord.
+All events in the `src/events` directory will be automatically registered when the bot starts, so there is no need to manually deploy them to Discord or make any other code changes.
 
 ## Handling Interaction Events
 
