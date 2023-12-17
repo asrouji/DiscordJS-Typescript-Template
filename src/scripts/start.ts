@@ -4,7 +4,7 @@
  */
 
 import BotClient from '../util/botClient'
-import Command from '../types/command'
+import SlashCommand from '../types/slashCommand'
 import { GatewayIntentBits } from 'discord.js'
 import dotenv from 'dotenv'
 import fs from 'fs'
@@ -25,7 +25,7 @@ const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('
 
 for (const file of commandFiles) {
   const commandPath = path.join(commandsPath, file)
-  const command: Command = (await import(pathToFileURL(commandPath).href)).default
+  const command: SlashCommand = (await import(pathToFileURL(commandPath).href)).default
   client.commands.set(command.data.name, command)
 }
 

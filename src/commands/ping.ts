@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from 'discord.js'
-import Command from '../types/command'
+import SlashCommand from '../types/slashCommand'
 
-const command: Command = {
+const command: SlashCommand = {
   data: new SlashCommandBuilder().setName('ping').setDescription('Replies with Pong!'),
   execute: async interaction => await interaction.reply(`Pong!`),
 }

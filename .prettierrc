@@ -9,5 +9,7 @@
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
   "arrowParens": "avoid",
-  "proseWrap": "preserve"
+  "proseWrap": "preserve",
+  "endOfLine": "auto",
+  "trailingComma": "es5"
 }

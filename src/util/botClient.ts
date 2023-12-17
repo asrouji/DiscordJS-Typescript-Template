@@ -1,5 +1,5 @@
 import { Client, ClientOptions, Collection } from 'discord.js'
-import Command from '../types/command'
+import SlashCommand from '../types/slashCommand'
 
 /**
  * Extension of the Discord.js Client class to include a collection of commands.
@@ -7,7 +7,7 @@ import Command from '../types/command'
  */
 export default class BotClient extends Client {
   /** A collection of commands to be listened for by the bot */
-  commands: Collection<unknown, Command>
+  commands: Collection<unknown, SlashCommand>
 
   constructor(options: ClientOptions) {
     super(options)

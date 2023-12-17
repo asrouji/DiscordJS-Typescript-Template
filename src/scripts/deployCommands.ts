@@ -4,7 +4,7 @@
  */
 
 import { REST, Routes } from 'discord.js'
-import Command from '../types/command'
+import SlashCommand from '../types/slashCommand'
 import fs from 'node:fs'
 import path from 'node:path'
 import dotenv from 'dotenv'
@@ -31,13 +31,13 @@ if (!process.env.BOT_TOKEN) {
   process.exit(1)
 }
 
-const commands: Command[] = []
+const commands: SlashCommand[] = []
 const commandsPath = path.join(__dirname, '..', 'commands')
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'))
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file)
-  const command: Command = (await import(pathToFileURL(filePath).href)).default
+  const command: SlashCommand = (await import(pathToFileURL(filePath).href)).default
   commands.push(command)
 }
 

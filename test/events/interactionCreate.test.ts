@@ -2,7 +2,7 @@ import { Client, Collection, CommandInteraction, Interaction, SlashCommandBuilde
 import interactionEvent from '../../src/events/interactionCreate'
 import { MockProxy, mock } from 'jest-mock-extended'
 import BotClient from '../../src/util/botClient'
-import Command from '../../src/types/command'
+import SlashCommand from '../../src/types/slashCommand'
 
 let client: MockProxy<BotClient>
 let interaction: MockProxy<CommandInteraction>
@@ -26,17 +26,17 @@ beforeEach(() => {
 
 test('finds and executes the correct command', async () => {
   // Create two commands, one with the correct name and one with an incorrect name
-  const correctCommand: Command = {
+  const correctCommand: SlashCommand = {
     data: new SlashCommandBuilder().setName('correct').setDescription('Correct command'),
     execute: jest.fn(),
   }
-  const incorrectCommand: Command = {
+  const incorrectCommand: SlashCommand = {
     data: new SlashCommandBuilder().setName('incorrect').setDescription('Incorrect command'),
     execute: jest.fn(),
   }
 
   // Add both commands to the client
-  client.commands = new Collection<string, Command>()
+  client.commands = new Collection<string, SlashCommand>()
   client.commands.set(correctCommand.data.name, correctCommand)
   client.commands.set(incorrectCommand.data.name, incorrectCommand)
 
@@ -61,7 +61,7 @@ test('does not execute if the interaction is not a command', async () => {
 })
 
 test('does not execute if the command does not exist', async () => {
-  client.commands = new Collection<string, Command>()
+  client.commands = new Collection<string, SlashCommand>()
   interaction.commandName = 'test123'
 
   console.error = jest.fn()
@@ -75,12 +75,12 @@ test('does not execute if the command does not exist', async () => {
 })
 
 test('catches errors in the command execution', async () => {
-  const command: Command = {
+  const command: SlashCommand = {
     data: new SlashCommandBuilder().setName('command').setDescription('Command'),
     execute: jest.fn().mockRejectedValue(new Error('Test error')),
   }
 
-  client.commands = new Collection<string, Command>()
+  client.commands = new Collection<string, SlashCommand>()
   client.commands.set(command.data.name, command)
 
   interaction.commandName = command.data.name
