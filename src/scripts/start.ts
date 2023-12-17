@@ -21,10 +21,12 @@ if (!process.env.BOT_TOKEN) {
   process.exit(1)
 }
 
+// Create our bot client. We use the custom BotClient class to enable slash commands.
 const client = new BotClient({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
 })
 
+// Load slash commands from the commands directory and add them to the client
 const commandsPath = path.join(__dirname, '..', 'commands')
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'))
 
@@ -34,6 +36,7 @@ for (const file of commandFiles) {
   client.commands.set(command.data.name, command)
 }
 
+// Load event listeners from the events directory and add them to the client
 const eventsPath = path.join(__dirname, '..', 'events')
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.ts'))
 
