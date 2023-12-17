@@ -89,14 +89,13 @@ The `Event` object has the following properties:
 
 Events are automatically registered when the bot starts, so there is no need to manually deploy them to Discord.
 
-## Commands
+## Built-In Scripts
 
 - `yarn dev` - Start the bot in development mode
 - `yarn start` - Start the bot in production mode
-- `yarn lint` - Runs ESLint
 - `yarn test` - Runs Jest unit tests
-- `yarn test:watch` - Run the tests in watch mode
+- `yarn lint` - Runs ESLint
 - `yarn typecheck` - Runs Typescript type checking
-- `yarn build` - Runs all the build steps
+- `yarn ci` - Runs all CI checks (lint, typecheck, test)
 - `yarn deploy-commands` - Deploys slash commands to Discord
 - `yarn delete-commands` - Deletes all slash commands from Discord
