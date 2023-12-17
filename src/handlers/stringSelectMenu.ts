@@ -1,4 +1,4 @@
-import InteractionHandler from '../types/handler'
+import InteractionHandler from '../types/interactionHandler'
 import { StringSelectMenuInteraction } from 'discord.js'
 import dotenv from 'dotenv'
 

@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction } from 'discord.js'
-import InteractionHandler from '../types/handler'
+import InteractionHandler from '../types/interactionHandler'
 import BotClient from '../util/botClient'
 
 const handler: InteractionHandler<ChatInputCommandInteraction> = {

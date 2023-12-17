@@ -1,5 +1,5 @@
 import { ModalSubmitInteraction } from 'discord.js'
-import InteractionHandler from '../types/handler'
+import InteractionHandler from '../types/interactionHandler'
 import dotenv from 'dotenv'
 
 dotenv.config()
