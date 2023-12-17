@@ -4,9 +4,9 @@ import {
   SlashCommandBuilder,
   StringSelectMenuOptionBuilder,
 } from 'discord.js'
-import SlashCommand from '../types/slashCommand'
+import Command from '../types/slashCommand'
 
-const command: SlashCommand = {
+const command: Command = {
   data: new SlashCommandBuilder().setName('select').setDescription('Sample select menu command'),
   execute: async interaction => {
     const selectMenu = new StringSelectMenuBuilder()

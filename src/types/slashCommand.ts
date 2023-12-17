@@ -3,7 +3,7 @@ import { CommandInteraction, SlashCommandBuilder, SlashCommandSubcommandsOnlyBui
 /**
  * Interface for defining slash commands. Import the `SlashCommandBuilder` from discord.js to create the command data.
  */
-export default interface SlashCommand {
+export default interface Command {
   /** The command data for Discord to display (use a SlashCommandBuilder!) */
   data:
     | SlashCommandBuilder

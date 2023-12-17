@@ -2,7 +2,7 @@ import { ChatInputCommandInteraction, Client, Collection } from 'discord.js'
 import chatInputCommandHandler from '../../src/handlers/chatInputCommand'
 import { mock } from 'jest-mock-extended'
 import BotClient from '../../src/util/botClient'
-import SlashCommand from '../../src/types/slashCommand'
+import Command from '../../src/types/slashCommand'
 
 beforeAll(() => {
   console.error = jest.fn()
@@ -22,11 +22,11 @@ describe('handles known commands', () => {
       commandName: 'sample_command',
     })
 
-    const command = mock<SlashCommand>({
+    const command = mock<Command>({
       execute: jest.fn(),
     })
 
-    client.commands = new Collection<string, SlashCommand>([['sample_command', command]])
+    client.commands = new Collection<string, Command>([['sample_command', command]])
 
     await chatInputCommandHandler.handle(interaction)
     expect(command.execute).toHaveBeenCalled()
@@ -43,11 +43,11 @@ describe('handles known commands', () => {
       commandName: 'sample_command',
     })
 
-    const command = mock<SlashCommand>({
+    const command = mock<Command>({
       execute: jest.fn().mockRejectedValue(new Error('Sample error')),
     })
 
-    client.commands = new Collection<string, SlashCommand>([['sample_command', command]])
+    client.commands = new Collection<string, Command>([['sample_command', command]])
 
     await chatInputCommandHandler.handle(interaction)
     expect(command.execute).toHaveBeenCalled()
@@ -67,7 +67,7 @@ describe('unknown select menu handling', () => {
       commandName: 'unknown_command',
     })
 
-    client.commands = new Collection<string, SlashCommand>()
+    client.commands = new Collection<string, Command>()
 
     await chatInputCommandHandler.handle(interaction)
     expect(interaction.reply).toHaveBeenCalled()
