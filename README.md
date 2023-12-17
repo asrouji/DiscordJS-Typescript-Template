@@ -97,6 +97,20 @@ The `Event` object has the following properties:
 
 Events are automatically registered when the bot starts, so there is no need to manually deploy them to Discord.
 
+## Handling Interaction Events
+
+The interaction event listener in `src/events/interactionCreate.ts` passes the interaction to an **interaction handler** depending on the interaction type (e.g. chat input command, button click, etc.). These handlers are defined in `src/handlers` and all share the `InteractionHandler` interface:
+
+```ts
+import { BaseInteraction } from 'discord.js'
+
+export default interface InteractionHandler<T extends BaseInteraction> {
+  handle(interaction: T): Promise<unknown>
+}
+```
+
+This modular setup enables the recieved interaction type to be inferred by the handler, which is important since all interaction types have different properties. Additional interaction types can be supported by adding a new handler to `src/handlers` and routing interactions to it in `src/events/interactionCreate.ts`.
+
 ## Built-In Scripts
 
 - `yarn dev` - Start the bot in development mode
