@@ -5,7 +5,7 @@ import { ClientEvents } from 'discord.js'
  * It is recommended to use the `createEvent` function to create an event, as it will infer the type of the event.
  * @template T The event name, e.g. `Events.ClientReady`
  */
-export default interface Event<T extends keyof ClientEvents> {
+export default interface EventListener<T extends keyof ClientEvents> {
   /** The name of the event */
   name: T
   /** Whether the event should only be executed once */
@@ -20,4 +20,4 @@ export default interface Event<T extends keyof ClientEvents> {
  * @param event The event handler
  * @returns The event handler
  */
-export const createEvent = <T extends keyof ClientEvents>(event: Event<T>) => event
+export const createEventListener = <T extends keyof ClientEvents>(event: EventListener<T>) => event

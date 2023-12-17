@@ -1,7 +1,7 @@
 import { Events } from 'discord.js'
-import { createEvent } from '../types/event'
+import { createEventListener } from '../types/event'
 
-const event = createEvent({
+const event = createEventListener({
   name: Events.ClientReady,
   once: true,
   execute: async client => {

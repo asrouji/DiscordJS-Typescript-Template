@@ -1,11 +1,11 @@
 import { Events } from 'discord.js'
-import { createEvent } from '../types/event'
+import { createEventListener } from '../types/event'
 
 import chatInputCommandHandler from '../handlers/chatInputCommand'
 import stringSelectMenuHandler from '../handlers/stringSelectMenu'
 import modalSubmitHandler from '../handlers/modalSubmit'
 
-const event = createEvent({
+const event = createEventListener({
   name: Events.InteractionCreate,
   once: false,
   execute: async interaction => {
