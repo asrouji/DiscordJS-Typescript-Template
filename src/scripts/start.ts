@@ -4,7 +4,7 @@
  */
 
 import BotClient from '../util/botClient'
-import Command from '../types/slashCommand'
+import Command from '../types/command'
 import { GatewayIntentBits } from 'discord.js'
 import dotenv from 'dotenv'
 import fs from 'fs'

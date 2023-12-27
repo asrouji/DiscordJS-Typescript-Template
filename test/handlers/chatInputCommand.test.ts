@@ -2,7 +2,7 @@ import { ChatInputCommandInteraction, Client, Collection } from 'discord.js'
 import chatInputCommandHandler from '../../src/handlers/chatInputCommand'
 import { mock } from 'jest-mock-extended'
 import BotClient from '../../src/util/botClient'
-import Command from '../../src/types/slashCommand'
+import Command from '../../src/types/command'
 
 beforeAll(() => {
   console.error = jest.fn()

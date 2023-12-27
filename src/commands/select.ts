@@ -4,7 +4,7 @@ import {
   SlashCommandBuilder,
   StringSelectMenuOptionBuilder,
 } from 'discord.js'
-import Command from '../types/slashCommand'
+import Command from '../types/command'
 
 const command: Command = {
   data: new SlashCommandBuilder().setName('select').setDescription('Sample select menu command'),
