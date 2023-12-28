@@ -91,7 +91,7 @@ export default event
 
 The `Event` object has the following properties:
 
-- `name` - The name of the event to listen for (see [Discord.js docs](https://discord.js.org/#/docs/main/stable/class/Client))
+- `name` - The Discord event to listen for (see [Discord.js docs](https://discord.js.org/docs/packages/discord.js/14.14.1/Events:Enum))
 - `once` - Whether the event should only be run once
 - `execute` - The function to run when the event is triggered
 
