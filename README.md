@@ -109,6 +109,8 @@ export default interface InteractionHandler<T extends BaseInteraction> {
 }
 ```
 
+`T` refers to the type of interaction being handled. The list of all interaction types can be found in the [Discord.js docs](https://discord.js.org/docs/packages/discord.js/14.14.1/Interaction:TypeAlias).
+
 This modular setup enables the recieved interaction type to be inferred by the handler, which is important since all interaction types have different properties. Additional interaction types can be supported by adding a new handler to `src/handlers` and routing interactions to it in `src/events/interactionCreate.ts`.
 
 ## Built-In Scripts
